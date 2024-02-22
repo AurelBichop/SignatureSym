@@ -3,24 +3,28 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\Dropzone\Form\DropzoneType;
-use function Sodium\add;
+
 
 class DropFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('PDF', DropzoneType::class,[
+            ->add('nom')
+            ->add('prenom')
+            ->add('mail')
+            ->add('pdfFile', DropzoneType::class,[
+                'label'=> 'Document PDF',
                 'attr'=>[
-                    'placeholder'=>"Deposez vos fichiers pour la signature"
+                    'placeholder'=>"Deposez votre fichier pour la signature"
                 ]
             ])
-            ->add('save', SubmitType::class)
+
+            ->add('Ajouter', SubmitType::class)
         ;
     }
 
